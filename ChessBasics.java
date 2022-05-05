@@ -3,7 +3,7 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class ChessBasics {
-    public static void main(String[] args)throws FileNotFoundException {
+    public static void main(String[] args) throws FileNotFoundException {
     ChessBoard board = new ChessBoard();
     Scanner scan = new Scanner(new File("game.txt"));
     String line;
@@ -55,9 +55,17 @@ public class ChessBasics {
                 int tr = Integer.parseInt(lineSegment[4]);
                 ChessPiece thatSpace = board.getPiece(c,r);
                 if(thatSpace.move(tc,tr)){
-                    board.setPiece(thatSpace, tc, tr);
-                    board.setPiece(empty, c, r);
-                    System.out.println("Moved! (" + c + "," + r + ") ("+ tc + "," + tr + ")");
+                        try {
+                            if(tc>7||tr>7){
+                            throw new OutOfBoardException("Invalid Board Position. ");}
+
+                            board.setPiece(thatSpace, tc, tr);
+                            board.setPiece(empty, c, r);
+                            System.out.println("Moved! (" + c + "," + r + ") ("+ tc + "," + tr + ")");
+
+                        } catch (OutOfBoardException e) {
+                            System.out.println("Invalid Board Position. ");;
+                        }
                     System.out.println("===================================");
                     System.out.println(board);
                     break;

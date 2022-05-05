@@ -35,7 +35,6 @@ public class ChessBoard {
         board[i][j]=t;
         t.setColumn(i);
         t.setRow(j);
-
     }
     public ChessPiece getPiece(int i, int j)
     {
