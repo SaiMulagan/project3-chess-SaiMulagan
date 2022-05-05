@@ -10,7 +10,7 @@ public class Pawn extends ChessPiece {
             if (rowDis==1){
                 return true;
             }
-            //This allows pawn to move 2 spaces at the beginning of game assuming the board is set correctly
+            //This allows pawn to move 2 spaces at the beginning of game.txt assuming the board is set correctly
             else if((getRow()==1 && toRow-getRow()==2) || (getRow()==6 && getRow()-toRow==2)){
                 return true;
             }
