@@ -1,15 +1,15 @@
 public class ChessBoard {
-    private String[][] board;
+    private ChessPiece[][] board;
 
     public ChessBoard()
     {
         int n=8;
-        board = new String[n][n];
-        for (int row=n-1; row>=0; row--)
+        board = new ChessPiece[n][n];
+        for (int col=n-1; col>=0; col--)
         {
-            for (int col=0; col<n; col++)
+            for (int row=0; row<n; row++)
             {
-                board[row][col]= "--- ";
+                board[col][row]= new Empty(col,row);
             }
         }
     }
@@ -23,18 +23,21 @@ public class ChessBoard {
             {
                 if (i==-1){System.out.print("="+(j)+"= ");}
                 else {
-                    System.out.print(board[i][j]);
+                    System.out.print(board[j][i]);
                 }
             }
             System.out.println();
         }
         return " ";
     }
-    public void setPiece(String t, int i, int j)
+    public void setPiece(ChessPiece t, int i, int j)
     {
         board[i][j]=t;
+        t.setColumn(i);
+        t.setRow(j);
+
     }
-    public String getPiece(int i, int j)
+    public ChessPiece getPiece(int i, int j)
     {
         return board[i][j];
     }
